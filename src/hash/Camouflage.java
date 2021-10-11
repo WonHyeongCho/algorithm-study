@@ -1,6 +1,7 @@
 package hash;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 제공자: Programers
@@ -35,32 +36,32 @@ public class Camouflage {
     }
 
     // 스트림 사용... 뭔말인지 모르겠다.
-    public static int solution(String[][] clothes) {
-        return Arrays.stream(clothes)
-                .collect(groupingBy(p -> p[1], mapping(p -> p[0], counting())))
-                .values()
-                .stream()
-                .collect(reducing(1L, (x, y) -> x * (y + 1))).intValue() - 1;
-    }
-
     // public static int solution(String[][] clothes) {
-    //     int answer = 1;
-
-    //     Map<String, Integer> map = new HashMap<>();
-
-    //     // 모든 경우의 수 맵에 저장
-    //     for(int i = 0; i < clothes.length; i++) {
-    //         map.put(clothes[i][1], map.getOrDefault(clothes[i][1], 0) + 1);
-    //     }
-
-    //     // 경우의 수 모두 곱함(안입을 경우가 있으므로 +1)
-    //     for(int val : map.values()) {
-    //         answer *= (val + 1);
-    //     }
-
-    //     // 모두 다 안입는 경우 마지막으로 뺴줌
-    //     return answer - 1;
+    //     return Arrays.stream(clothes)
+    //             .collect(groupingBy(p -> p[1], mapping(p -> p[0], counting())))
+    //             .values()
+    //             .stream()
+    //             .collect(reducing(1L, (x, y) -> x * (y + 1))).intValue() - 1;
     // }
+
+    public static int solution(String[][] clothes) {
+        int answer = 1;
+
+        Map<String, Integer> map = new HashMap<>();
+
+        // 모든 경우의 수 맵에 저장
+        for(int i = 0; i < clothes.length; i++) {
+            map.put(clothes[i][1], map.getOrDefault(clothes[i][1], 0) + 1);
+        }
+
+        // 경우의 수 모두 곱함(안입을 경우가 있으므로 +1)
+        for(int val : map.values()) {
+            answer *= (val + 1);
+        }
+
+        // 모두 다 안입는 경우 마지막으로 뺴줌
+        return answer - 1;
+    }
 
     /**
      * 메모리 초과, 예외 발생
