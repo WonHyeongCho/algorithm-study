@@ -24,7 +24,7 @@ public class Carpet {
         int row = 0;
         int col = 0;
 
-        for(int i = 3; i < totalCarpets/2; i++) { // 약수 찾기, 1, 2는 제외
+        for(int i = 3; i < Math.sqrt(totalCarpets); i++) { // 약수 찾기, 1, 2는 제외
             if(totalCarpets%i == 0) { // 약수 일 경우
                 row = i;
                 col = totalCarpets/i;
