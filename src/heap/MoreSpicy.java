@@ -1,8 +1,6 @@
 package heap;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.PriorityQueue;
 
 /**
  * 제공자: Programers
@@ -21,58 +19,84 @@ public class MoreSpicy {
         System.out.println(solution(scoville, K));
     }
 
+    // 우선순위큐로 풀이, 우선순위 큐는 넣자마자 정렬 해준다.
     static int solution(int[] scoville, int K) {
         int answer = 0;
 
-        Arrays.sort(scoville); // 스코필 지수 정렬 
-        List<Integer> scovilleList = Arrays.stream(scoville).boxed().collect(Collectors.toList()); // 리스트로 변경
+        PriorityQueue<Integer> scovilleQueue = new PriorityQueue<>();
 
-        while(true) {
-            // for(int a : scovilleList) {
-            //     System.out.print(a + " ");
-            // }
-
-            int minScoville = scovilleList.get(0);
-
-            if(minScoville >= K) { 
-                return answer;
-            }
-
-            int secondMinScoville = scovilleList.get(1);
-            scovilleList.remove(0);
-            scovilleList.remove(0);
-
-            int newScoville = minScoville + secondMinScoville*2;
-
-            // System.out.println();
-            // System.out.println("minScoville: " + minScoville + " secondMinScoville: " + secondMinScoville + " newScoville: " + newScoville);
-
-            answer++; // 횟수 증가
-            
-            if(scovilleList.size() == 0) { // 모두 섞었을 경우
-                if(newScoville >= K) {
-                    return answer;
-                }
-                else {
-                    return -1;
-                }
-            }
-
-            for(int i = 0; i < scovilleList.size(); i++) {
-                if(scovilleList.get(i) >= newScoville) {
-                    if(newScoville >= K) { // 모든 스코빌이 K 보다 큼
-                        return answer;
-                    }
-                    else {
-                        scovilleList.add(i, newScoville);
-                        break;
-                    }
-                }
-
-                if(i == scovilleList.size()) {
-                    scovilleList.add(scovilleList.size(), newScoville); // 제일 마지막에 넣기
-                }
-            }
+        for(int num : scoville) {
+            scovilleQueue.add(num);
         }
+
+        while(scovilleQueue.peek() < K) {
+            if(scovilleQueue.size() == 1) {
+                return -1;
+            }
+
+            int minScoville = scovilleQueue.poll();
+            int secMinScoville = scovilleQueue.poll();
+            int newScoville = minScoville + secMinScoville*2;
+            scovilleQueue.add(newScoville);
+            answer++;
+        }
+        
+        return answer;
     }
+
+    // 리스트 풀이 --> 실패
+    // static int solution(int[] scoville, int K) {
+    //     int answer = 0;
+
+    //     Arrays.sort(scoville); // 스코필 지수 정렬 
+    //     List<Integer> scovilleList = Arrays.stream(scoville).boxed().collect(Collectors.toList()); // 리스트로 변경
+
+    //     while(true) {
+    //         // for(int a : scovilleList) {
+    //         //     System.out.print(a + " ");
+    //         // }
+
+    //         int minScoville = scovilleList.get(0);
+
+    //         if(minScoville >= K) { 
+    //             return answer;
+    //         }
+
+    //         int secondMinScoville = scovilleList.get(1);
+    //         scovilleList.remove(0);
+    //         scovilleList.remove(0);
+
+    //         int newScoville = minScoville + secondMinScoville*2;
+
+    //         // System.out.println();
+    //         // System.out.println("minScoville: " + minScoville + " secondMinScoville: " + secondMinScoville + " newScoville: " + newScoville);
+
+    //         answer++; // 횟수 증가
+            
+    //         if(scovilleList.size() == 0) { // 모두 섞었을 경우
+    //             if(newScoville >= K) {
+    //                 return answer;
+    //             }
+    //             else {
+    //                 return -1;
+    //             }
+    //         }
+
+    //         for(int i = 0; i < scovilleList.size(); i++) {
+    //             if(scovilleList.get(i) >= newScoville) {
+    //                 if(newScoville >= K) { // 모든 스코빌이 K 보다 큼
+    //                     return answer;
+    //                 }
+    //                 else {
+    //                     scovilleList.add(i, newScoville);
+    //                     break;
+    //                 }
+    //             }
+
+    //             if(i == scovilleList.size()) {
+    //                 scovilleList.add(scovilleList.size(), newScoville); // 제일 마지막에 넣기
+    //             }
+    //         }
+    //     }
+    // }
 }
