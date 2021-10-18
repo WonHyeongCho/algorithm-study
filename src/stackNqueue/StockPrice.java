@@ -4,6 +4,15 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * 제공자: Programers
+ * 제목: 주식 가격
+ * URL: https://programmers.co.kr/learn/courses/30/lessons/42584
+ * 난이도: Level 2
+ * 풀이완료시간: 45분 시간제한, 60분
+ * 성공여부: 실패
+ * 설명: 배열을 큐에 넣어서 많이 햇갈렸다... 햇갈리지 않게 잘 넣어야겠다.
+ */
 public class StockPrice {
     public static void main(String[] args) {
         int[] prices = {1, 2, 3, 2, 3};
