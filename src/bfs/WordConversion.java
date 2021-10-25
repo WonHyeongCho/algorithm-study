@@ -12,6 +12,8 @@ import java.util.Queue;
  * 풀이완료시간: 35분/45분
  * 성공여부: 성공
  * 설명: 음.. 객체를 써서 체크 배열을 계속 복사하긴 하는데 메모리를 많이 쓸까?
+ * 착각을 했다. 굳이 각 객체 별로 체크 배열을 들고갈 필요가 없음 --> isChangable이면 다시 되돌아갈 이유가 없기 때문에
+ * 그래서 그냥 단순히 BFS로 풀면 된다.
  */
 public class WordConversion {
     public static void main(String[] args) {
