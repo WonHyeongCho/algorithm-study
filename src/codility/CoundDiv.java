@@ -9,7 +9,13 @@ public class CoundDiv {
     }
 
     private static int solution(int A, int B, int K) {
-        return (int) (Math.floor(B/K) - Math.ceil(A/K) + 1);
+        int answer = B/K - A/K;
+
+        if(A%K == 0){
+            answer++;
+        }
+
+        return answer;
     }
 
     // 이것도 시간 에러
