@@ -29,7 +29,7 @@ public class Printer {
         }
 
         Arrays.sort(priorities); // 우선순위 배열을 정렬
-        int size = priorities.length - 1; // 제일 마지막부터 시작
+        int size = priorities.length - 1; // 제일 마지막부터 시작ㅎ
 
         while(!queue.isEmpty()) { // 큐가 비어있을 때 까지
             Integer integer = queue.poll();
@@ -37,7 +37,7 @@ public class Printer {
             if(integer == priorities[size - answer]) { // 우선순위가 가장 높음
                 answer++;
                 location--;
-                if(location < 0) break; // 내가 원하는 데이터를 추출했음
+                if(location < 0) break; // 내가 원하는 데이터를 추출했음!
             }
             else {
                 queue.add(integer);
