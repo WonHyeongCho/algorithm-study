@@ -3,6 +3,12 @@ package FreeButSteedy;
 import java.util.Arrays;
 import java.util.Stack;
 
+/**
+ * 제공자: Programmers
+ * 제목: 택배 상자
+ * URL: https://school.programmers.co.kr/learn/courses/30/lessons/131704
+ * 난이도: Level 2
+ */
 public class Week_11_2 {
 
     public static void main(String[] args) {
