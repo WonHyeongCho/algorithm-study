@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
  * URL: https://school.programmers.co.kr/learn/courses/30/lessons/147354
  * 난이도: Level 2
  * 풀이완료시간: 20분
- * 설명: 이분 탐색 문제 이다. min 과 max 를 정의하는것이 애매하다. 블로그에 있는 해석도 좀...
+ * 설명: 정렬을 먼저 진행해야 효율성 검사에 안걸린다. 그리고 나누는 숫자를 찾는것이 중요한데, 이것은 두 배열의 공통된 약수를 찾는것이다.
  */
 public class Week_13_1 {
 
