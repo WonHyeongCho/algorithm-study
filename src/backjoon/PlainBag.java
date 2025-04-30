@@ -31,6 +31,22 @@ public class PlainBag {
         solution(N, K, bags);
     }
 
+    static void solution(int N, int K, int[][] bags) {
+        int[] dp = new int[K + 1];
+
+        for(int i = 0; i < N; i++) {
+            int weight = bags[i][0];
+            int value = bags[i][1];
+
+            for(int j = K; j >= weight; j--) {
+                dp[j] = Math.max(dp[j], dp[j - weight] + value);
+            }
+        }
+
+        System.out.println(dp[K]);
+    }
+
+
     /**
      * 그리디 방식으로 풀었는데 다음과 같은 반례가 존재함.
      * N = 4, K = 3
@@ -41,7 +57,7 @@ public class PlainBag {
      * 4) 무게 2, 가치 3
      * 0-1 Knapsack 문제는 DP로 해결해야함
      */
-    static void solution(int N, int K, int[][] bags) {
+    static void wrongSolution(int N, int K, int[][] bags) {
         int[][] sorted = Arrays.stream(bags).sorted((o1, o2) -> {
             if(o2[1] > o1[1]) {
                 return 1;
